@@ -94,7 +94,7 @@ const worker = new Worker(
             console.log("Master Playlist Created");
             console.log("Master Playlist Path:", masterPlaylistPath);
 
-``
+            ``
 
             const hlsRootFolder =
                 `uploads/hls/${job.data.videoId}`;
@@ -103,7 +103,7 @@ const worker = new Worker(
             await uploadHLSFolderToS3(hlsRootFolder, job.data.videoId);
 
             const hlsMasterUrl =
-                `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/hls/${job.data.videoId}/master.m3u8`;
+                `https://s3.${process.env.AWS_REGION}.amazonaws.com/${process.env.AWS_BUCKET_NAME}/hls/${job.data.videoId}/master.m3u8`;
 
             console.log("HLS Folder Uploaded To S3");
             console.log("Master URL:", hlsMasterUrl);

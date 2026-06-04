@@ -61,6 +61,37 @@ const uploadVideo = async (req, res) => {
     }
 };
 
+const getVideoById = async (req, res) => {
+    try {
+
+        const { id } = req.params;
+
+        const video = await Video.findById(id);
+
+        if (!video) {
+            return res.status(404).json({
+                success: false,
+                message: "Video not found",
+            });
+        }
+
+        return res.status(200).json({
+            success: true,
+            data: video,
+        });
+
+    } catch (error) {
+
+        return res.status(500).json({
+            success: false,
+            message: error.message,
+        });
+
+    }
+
+};
+
 export {
     uploadVideo,
+    getVideoById,
 };
