@@ -139,10 +139,10 @@ function UploadBox() {
                 onDrop={handleDrop}
                 onClick={!file && !loading ? triggerFileInput : undefined}
                 className={`relative overflow-hidden rounded-xl border-2 border-dashed transition-all duration-300 px-6 py-10 flex flex-col items-center justify-center text-center cursor-pointer 
-                    ${isDragActive 
-                        ? "border-indigo-500 bg-indigo-500/10 scale-[0.99]" 
-                        : file 
-                            ? "border-slate-700 bg-slate-900/20" 
+                    ${isDragActive
+                        ? "border-indigo-500 bg-indigo-500/10 scale-[0.99]"
+                        : file
+                            ? "border-slate-700 bg-slate-900/20"
                             : "border-slate-700 hover:border-indigo-500/50 bg-slate-950/40 hover:bg-slate-900/40"
                     }`}
             >
@@ -178,11 +178,11 @@ function UploadBox() {
                                 <span className="text-xs font-semibold text-slate-300 truncate">{file.name}</span>
                                 <span className="text-[10px] text-slate-500">{formatBytes(file.size)}</span>
                             </div>
-                            
+
                             {!loading && (
-                                <button 
+                                <button
                                     onClick={handleRemoveFile}
-                                    type="button" 
+                                    type="button"
                                     className="p-1.5 rounded bg-slate-900 hover:bg-red-500/10 text-slate-400 hover:text-red-400 border border-slate-800 transition-colors cursor-pointer"
                                 >
                                     <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -200,8 +200,8 @@ function UploadBox() {
                                     <span className="font-mono">{uploadProgress}%</span>
                                 </div>
                                 <div className="w-full h-1.5 bg-slate-950 rounded-full overflow-hidden border border-slate-800">
-                                    <div 
-                                        className="h-full bg-linear-to-rrom-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-100 ease-out"
+                                    <div
+                                        className="h-full bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 rounded-full transition-all duration-100 ease-out"
                                         style={{ width: `${uploadProgress}%` }}
                                     />
                                 </div>
@@ -218,8 +218,8 @@ function UploadBox() {
                         onClick={handleUpload}
                         disabled={loading}
                         className={`w-full relative py-3 px-6 rounded-xl font-semibold text-sm transition-all duration-300 shadow-md flex items-center justify-center gap-2 overflow-hidden
-                            ${loading 
-                                ? "bg-slate-900 border border-slate-800 text-slate-500 cursor-not-allowed" 
+                            ${loading
+                                ? "bg-slate-900 border border-slate-800 text-slate-500 cursor-not-allowed"
                                 : "bg-linear-to-r from-indigo-500 via-purple-500 to-pink-500 text-white hover:opacity-95 hover:shadow-indigo-500/20 active:scale-95 group/btn cursor-pointer"
                             }`}
                     >
@@ -248,7 +248,8 @@ function UploadBox() {
                 </div>
             )}
 
-            <style dangerouslySetInnerHTML={{ __html: `
+            <style dangerouslySetInnerHTML={{
+                __html: `
                 @keyframes shimmer {
                     100% {
                         transform: translateX(100%);
