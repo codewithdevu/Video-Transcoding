@@ -70,9 +70,19 @@ const downloadFromS3 = async (s3Key) => {
 
     const response = await s3Client.send(command);
 
-    const filePath = path.join(
+    const tempDir = path.join(
         process.cwd(),
-        "uploads/temp",
+        "uploads",
+        "temp"
+    );
+
+    // Folder create kar do agar exist nahi karta
+    if (!fs.existsSync(tempDir)) {
+        fs.mkdirSync(tempDir, { recursive: true });
+    }
+
+    const filePath = path.join(
+        tempDir,
         "input.mp4"
     );
 
@@ -82,13 +92,12 @@ const downloadFromS3 = async (s3Key) => {
         response.Body.pipe(writeStream);
 
         response.Body.on("error", reject);
-
+        writeStream.on("error", reject);
         writeStream.on("finish", resolve);
     });
 
     return filePath;
 };
-
 const uploadFinalTransocodeFileToS3 = async (filePath) => {
     console.log("Reading processed file...");
     const fileContent = fs.readFileSync(filePath);

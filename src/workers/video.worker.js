@@ -11,6 +11,16 @@ import { createMasterPlaylist } from "../utils/masterPlaylist.js";
 
 await connectDB();
 
+[
+    "uploads/temp",
+    "uploads/output",
+    "uploads/hls"
+].forEach(folder => {
+    fs.mkdirSync(folder, {
+        recursive: true,
+    });
+});
+
 const worker = new Worker(
     "video-Transcoding",
 
